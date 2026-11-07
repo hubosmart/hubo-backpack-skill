@@ -1,0 +1,16 @@
+{
+  "source": "hubosmart/hubo-backpack-template",
+  "commit": "ffa90e0",
+  "files": {
+    "kicad/fp-lib-table": "923298d0d49c09069ea65cf06eb1035b562e050d48d01a71f34986f847f15c65",
+    "kicad/hubo-backpack-template.kicad_dru": "7e31fcd7fb45a08b68e3e401ec96916c6dbf1bb308fef72f01fe4b2b380dcc30",
+    "kicad/hubo-backpack-template.kicad_pcb": "08a4626be0aa1532252dad576f04d75a25f07366d9a1996a66f440594b2035de",
+    "kicad/hubo-backpack-template.kicad_pro": "2b5f0a2af961d9251267c978886c4f1e528e445a26ab0b3a19b0ff36d161dfe7",
+    "kicad/hubo-backpack-template.kicad_sch": "d00ed240a6335793f6eef641072a23fe7eb915ca939522e2eb4b69aad0d351f5",
+    "kicad/lib/HuboTack.kicad_sym": "72241a226a89752dd8bee8a19d714be0520abf8ed7ce1194f70bfb3c72f2f458",
+    "kicad/lib/HuboTack.pretty/HDR-SMD_30P-P2.00-V-M-R2-C15-LS6.5.kicad_mod": "366cb3e1622720231abdb9fb748c3c2204a1561de0894e7e2496feb89c9f9f1d",
+    "kicad/lib/HuboTack.pretty/MountingHole_M2_Pad.kicad_mod": "e05ce5f114bcd50aa360605a29dbee170d8da7cf0fa9b8b8aa91f9d1a36bf5c6",
+    "kicad/sym-lib-table": "b232cffc799d93c27e8d55b906349eee228b3f51799c56e67fac924c3af9408f",
+    "LICENSE": "1b0ac74323adc5932ea5d80170ff424e1d82709851ce39acf85106bfdac2c5c7"
+  }
+}

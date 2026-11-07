@@ -1,0 +1,49 @@
+{
+  "_source": "The single place these values are maintained is SPEC-003 \"Hubo-Tack 30-pin backpack schematic and layout design specification\" 6.5 (see github.com/hubosmart/hubo-backpack-spec); after a spec revision, sync this file and update spec_version. Only entries already computed with the PCB house calculator, with source and date stated, are accepted; a platform with no entries must not borrow another platform's values.",
+  "spec_version": "SPEC-003 V1.6",
+  "platforms": {
+    "JLCPCB": {
+      "calculator": {
+        "domestic": "https://tools.jlc.com/jlcTools/index.html#/impedanceCalculatenew",
+        "international": "https://jlcpcb.com/pcb-impedance-calculator",
+        "note": "The first stackup the international calculator recommends is JLC04161H-3313A (two prepregs, dielectric about twice as thick); switch manually to JLC04161H-3313"
+      },
+      "stackup_page": "https://jlcpcb.com/impedance",
+      "default_stackup": {"4": "JLC04161H-3313"},
+      "stackups": {
+        "JLC04161H-3313": {
+          "layers": 4, "thickness_mm": 1.6, "outer_cu": "1oz", "inner_cu": "0.5oz",
+          "params_checked": "2026-10-03",
+          "params": "L1 copper 0.035; 3313 prepreg 0.0994 mm, Dk 4.1; L2 copper 0.0152; core 1.265 mm, Dk 4.6; L3 copper 0.0152; 3313 0.0994; L4 copper 0.035; solder mask Dk 3.8",
+          "stack": [
+            {"layer": "F.Mask", "thickness": 0.01, "epsilon_r": 3.8},
+            {"layer": "F.Cu", "thickness": 0.035},
+            {"type": "prepreg", "material": "3313 RC57%", "thickness": 0.0994, "epsilon_r": 4.1},
+            {"layer": "In1.Cu", "thickness": 0.0152},
+            {"type": "core", "material": "FR4 H/HOZ", "thickness": 1.265, "epsilon_r": 4.6},
+            {"layer": "In2.Cu", "thickness": 0.0152},
+            {"type": "prepreg", "material": "3313 RC57%", "thickness": 0.0994, "epsilon_r": 4.1},
+            {"layer": "B.Cu", "thickness": 0.035},
+            {"layer": "B.Mask", "thickness": 0.01, "epsilon_r": 3.8}
+          ],
+          "stack_note": "Used to write the KiCad stackup (scripts/stackup.py); solder mask thickness taken as 0.01 mm from JLCPCB's 0.6 mil over copper; JLCPCB gives no loss tangent, KiCad uses 0.02",
+          "history": "The Dk of 3313 used to be 4.05 (old JLCPCB impedance page), now 4.1; 3313 replaces 2313 (same thickness and Dk)",
+          "check_point": {"mode": "differential impedance (outer)", "layer": "L1", "ref": "L2", "z_ohm": 100, "gap_mil": 10.48, "expect_width_mil": 5.1},
+          "entries": [
+            {"z_ohm": 50, "mode": "single-ended coplanar (RF)", "layer": "L1", "ref": "L2", "width_mm": 0.15, "to_copper_mm": 0.254,
+             "source": "JLCPCB calculator (domestic version), 2026-10-03"},
+            {"z_ohm": 90, "mode": "differential (outer)", "layer": "L1", "ref": "L2", "width_mil": 6.6, "gap_mil": 12.58,
+             "source": "JLCPCB calculator (domestic version), 2026-10-03"},
+            {"z_ohm": 100, "mode": "differential (outer)", "layer": "L1", "ref": "L2", "width_mil": 5.1, "gap_mil": 10.48,
+             "source": "JLCPCB calculator (domestic version), 2026-10-03"}
+          ],
+          "note": "With L4 referenced to L3 the stackup is symmetric, so the same values apply"
+        }
+      }
+    },
+    "Huaqiu": {
+      "calculator": {"note": "On first use the designer computes it with the official Huaqiu impedance calculator (or confirms with Huaqiu engineering), fills it into this table and syncs SPEC-003 6.5.3"},
+      "stackups": {}
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "_readme": "Copy next to the board file and name it <board name>.hz_layout.json; content copied from the design document. power_rules.py computes the minimum track width from power per IPC-2221 (10 C temperature rise) and generates DRC rules; prod_gate.py runs checks before export. Keys starting with _ are comments only.",
+  "_power_notes": "current_a is the current the net's traces actually carry: if the trunk is a pour and traces are only branches, use the branch current; layer is the layer the traces are on, outer/inner; optional copper_oz (default 1 outer, 0.5 inner) and width_mm (margin, may only be wider than the computed value)",
+  "power": [
+    {
+      "nets": [
+        "+5V"
+      ],
+      "current_a": 2.0,
+      "layer": "outer",
+      "basis": "[EXAMPLE VALUE - REPLACE] design document section 4, current limit 2 A"
+    },
+    {
+      "nets": [
+        "3V3"
+      ],
+      "current_a": 0.5,
+      "layer": "outer",
+      "width_mm": 0.3,
+      "basis": "[EXAMPLE VALUE - REPLACE] design document section x"
+    }
+  ],
+  "checks": {
+    "hs_review": [
+      "--hs",
+      "USB_D",
+      "--max-vias",
+      "2",
+      "--skew",
+      "USB_D=5"
+    ],
+    "_hs_review_gbps_notes": "For MIPI/HDMI also add --stub prefix=15 (via stub in mil, SPEC-005 2.8) and --pair-skew prefix=30 (pair-to-pair length difference in mil, appendix C; MIPI uses the stricter 30)",
+    "_multi_set_notes": "When the same check must run once per parameter set (several impedance widths, several plane layers), write the value as a list of parameter lists, e.g. \"plane_check\": [[\"--layer\", \"In1.Cu\"], [\"--layer\", \"In4.Cu\"]]",
+    "_impedance_check_notes": "Example: JLCPCB 3313 stackup, 90 ohm differential, 6.6/12.58 mil",
+    "impedance_check": [
+      "--width",
+      "0.1676",
+      "--gap",
+      "0.3195",
+      "--nets",
+      "USB_D"
+    ],
+    "plane_check": [
+      "--layer",
+      "In2.Cu"
+    ],
+    "_fence_check_notes": "Guard-ground vias (SPEC-005 2.9): spacing MIPI 3, HDMI 4, USB 2.0 6 mm; --exempt uses the same exempt boxes as hs_review (chip fan-out, connector and ESD pad areas), relative to the drill origin",
+    "fence_check": [
+      "--net",
+      "USB_D=6",
+      "--exempt",
+      "-5",
+      "-5",
+      "5",
+      "5"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "_source": "Hubo-Tack 30-pin backpack spec SPEC-003 V1.6 / ID card spec SPEC-004 V2.2, see github.com/hubosmart/hubo-backpack-spec",
+  "spec_version": "SPEC-003 V1.6 / SPEC-004 V2.2",
+  "coords": "mm, origin at the board center (drill/place origin), viewed from the top, X right, Y down",
+  "tolerance_mm": 0.05,
+  "outline": {"width": 83.0, "height": 40.0, "corner_radius": 2.0},
+  "layer_counts": [2, 4],
+  "mounting_holes": {
+    "positions": [[-39.5, -18.0], [39.5, -18.0], [-39.5, 18.0], [39.5, 18.0]],
+    "drill": 2.0,
+    "pad_min": 3.0,
+    "net": "GND"
+  },
+  "header": {
+    "pads": 30,
+    "side": "bottom",
+    "pad1": [-31.63, -13.431],
+    "odd_column_x": -31.63,
+    "even_column_x": -36.13,
+    "row_pitch": 2.0
+  },
+  "pins": {
+    "5V": [1, 2],
+    "3V3": [3, 4],
+    "GND": [5, 6, 11, 12, 17, 18, 23, 24, 30],
+    "ESP_INT": [13],
+    "ID_SCL": [14],
+    "ID_SDA": [15],
+    "MUX": [7, 8, 9, 10, 25, 27, 28, 29],
+    "NC_DEFAULT": [16, 19, 20, 21, 22, 26]
+  },
+  "id_card": {
+    "part_pattern": "24C02",
+    "address_base": 80,
+    "address_burn": 87,
+    "address_table": {
+      "80": "Reserved for official models",
+      "81": "Reserved for official models",
+      "82": "Reserved for official models",
+      "83": "Reserved for official models",
+      "84": "Reserved for official models",
+      "85": "Reserved for official models",
+      "86": "Reserved for official models",
+      "87": "Programmed card (DIY must use this; product_id 0xF000-0xFFFE; write the descriptor per SPEC-004)"
+    },
+    "pins": {"A0": "1", "A1": "2", "A2": "3", "GND": "4", "SDA": "5", "SCL": "6", "WP": "7", "VCC": "8"}
+  },
+  "limits": {
+    "top_height_mm": 3.9,
+    "bottom_height_mm_excl_header": 1.7,
+    "current_5v_continuous_a": 2.0,
+    "current_3v3_ma": 50,
+    "silk_text_height_mm": 1.0,
+    "silk_text_thickness_mm": 0.15
+  }
+}
